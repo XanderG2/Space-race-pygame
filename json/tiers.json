@@ -1,0 +1,22 @@
+{
+  "1": [
+    "Iron",
+    "Copper",
+    "Space rock",
+    "Water",
+    "Scraps",
+    "Nickel",
+    "Alien bacteria"
+  ],
+  "2": ["Iron", "High quality space rock", "Nickel", "Small alien organism"],
+  "3": ["Unknown metal", "Extremely high quality space rock", "Alien"],
+  "4": ["Unknown metal", "Purple material", "Alien DNA", "Uranium"],
+  "5": [
+    "Unknown new element",
+    "Green material",
+    "Alien architecture",
+    "Plutonium",
+    "Magic",
+    "Teleportation"
+  ]
+}

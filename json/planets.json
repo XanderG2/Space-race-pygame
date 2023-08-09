@@ -1,0 +1,24 @@
+{
+  "1": [
+    "Mercury",
+    "Venus",
+    "Mars",
+    "Asteroid belt",
+    "Jupiter",
+    "Saturn",
+    "Uranus",
+    "Neptune",
+    "Pluto",
+    "Keiper Belt"
+  ],
+  "2": ["Proxima centauri b", "Proxima centauri c", "Proxima centauri d"],
+  "3": ["Epsilon Eridani b", "YZ Ceti b", "YZ Ceti c", "YZ Ceti d"],
+  "4": [
+    "HD 219134 b",
+    "HD 219134 c",
+    "HD 219134 d",
+    "HD 219134 g",
+    "HD 219134 h"
+  ],
+  "5": ["SWEEPS-11", "SWEEPS-04", "COCONUTS-2b", "CT Chamaeleontis b"]
+}
