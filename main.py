@@ -310,6 +310,25 @@ def draw_window1(texts, text_surface, input_box, color, button_rect, button_colo
     pygame.display.flip()
     pygame.display.update()
 
+def draw_window2(texts, buttons):
+    WIN.fill(WHITE)
+    for key in texts.keys():
+        x, y = texts[key][0], texts[key][1]
+        text = FONT.render(key, 1, BLACK)
+        WIN.blit(text, (x,y))
+    for key, value in buttons.items():
+        button_rect = value["button_rect"]
+        button_color = value["button_color"]
+        button_text = value["button_text"]
+        button_font = value["button_font"]
+        button_text_surface = button_font.render(button_text, True, pygame.Color('white'))
+        text_x = button_rect.x + 10  # Adjust the value as needed
+        text_y = button_rect.y + 10  # Adjust the value as needed
+        WIN.blit(button_text_surface, (text_x, text_y))
+        pygame.draw.rect(WIN, button_color, button_rect)
+    pygame.display.flip()
+    pygame.display.update()
+
 def main():
     input_box = pygame.Rect(125, 100, 200, 32)
     color_inactive = pygame.Color('lightskyblue3')
@@ -355,13 +374,13 @@ def main():
                     else:
                         active = False
                     if button_rect.collidepoint(event.pos):
-                        stage += 1
+                        stage = 2
                         upgrades["Name"] = name
                     color = color_active if active else color_inactive
                 if event.type == pygame.KEYDOWN:
                     if active:
                         if event.key == pygame.K_RETURN:
-                            stage += 1
+                            stage = 2
                             upgrades["Name"] = name
                         elif event.key == pygame.K_BACKSPACE:
                             name = name[:-1]
@@ -372,9 +391,49 @@ def main():
             
             draw_window1({"Welcome to space race!": [0,0], "Enter ship name: ": [0, 100]}, text_surface, input_box, color, button_rect, button_color, button_text_surface)
         elif stage == 2:
-            print(upgrades)
-            ''' #do later: convert to pygame code
-            print(f"Do you want to 1. upgrade {shipname} or 2. launch it? or 3. see inventory or 4. research or 5. save and quit or 6. load")
+            buttons = {
+                1: {
+                    "button_rect": pygame.Rect(340, 100, 75, 32),
+                    "button_color": pygame.Color("black"),
+                    "button_text": f"Upgrade {upgrades['Name']}",
+                    "button_font": pygame.font.Font(None, 24)
+                },
+                2: {
+                    "button_rect": pygame.Rect(340, 100, 75, 32),
+                    "button_color": pygame.Color("black"),
+                    "button_text": "Launch",
+                    "button_font": pygame.font.Font(None, 24)
+                },
+                3: {
+                    "button_rect": pygame.Rect(340, 100, 75, 32),
+                    "button_color": pygame.Color("black"),
+                    "button_text": "See inventory",
+                    "button_font": pygame.font.Font(None, 24)
+                },
+                4: {
+                    "button_rect": pygame.Rect(340, 100, 75, 32),
+                    "button_color": pygame.Color("black"),
+                    "button_text": "Research",
+                    "button_font": pygame.font.Font(None, 24)
+                },
+                5: {
+                    "button_rect": pygame.Rect(340, 100, 75, 32),
+                    "button_color": pygame.Color("black"),
+                    "button_text": "Save and quit",
+                    "button_font": pygame.font.Font(None, 24)
+                },
+                6: {
+                    "button_rect": pygame.Rect(340, 100, 75, 32),
+                    "button_color": pygame.Color("black"),
+                    "button_text": "Load",
+                    "button_font": pygame.font.Font(None, 24)
+                }
+            }
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit()
+            '''
             option = input("> ")
             if option == "1":
                 upgradef()
@@ -389,5 +448,6 @@ def main():
             elif option == "6":
                 loadprep()
             '''
+            draw_window2({"What do you want to do?": [0,0]}, buttons)
 if __name__ == "__main__":
     main()
